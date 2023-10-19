@@ -4,7 +4,7 @@ import { icons } from "../utils/icons"
 
 const Footer = () => {
   return (
-    <div className="p-5 px-10 bottom-0 bg-blue-600 w-full text-white sm:px-20">
+    <div className="p-5 px-10 bottom-0 bg-blue-400 w-full text-white sm:px-20">
 			<div className="px-10 sm:px-20">
 				<span>
 					<FontAwesomeIcon icon={icons.hospital}/>

@@ -32,7 +32,7 @@ const SIgnupPage = () => {
 						Unkown Hospital Site
 					</li>
 					<li className="flex items-center pr-10">
-						<div className="p-2 m-2 mr-8 text-4xl text-blue-600">
+						<div className="p-2 m-2 mr-8 text-4xl text-white">
 							<FontAwesomeIcon icon={icons.calendar} />
 						</div>
 						<div className="flex flex-col">
@@ -41,7 +41,7 @@ const SIgnupPage = () => {
 						</div>
 					</li>
 					<li className="flex items-center pr-10">
-						<div className="p-2 m-2 mr-8 text-4xl text-yellow-500">
+						<div className="p-2 m-2 mr-8 text-4xl text-yellow-400">
 							<FontAwesomeIcon icon={icons.comment}/>
 						</div>
 						<div className="flex flex-col">
@@ -50,7 +50,7 @@ const SIgnupPage = () => {
 						</div>
 					</li>
 					<li className="flex items-center pr-10">
-						<div className="p-2 m-2 mr-8 text-4xl text-blue-600">
+						<div className="p-2 m-2 mr-8 text-4xl text-white">
 							<FontAwesomeIcon icon={icons.pills}/>
 						</div>
 						<div className="flex flex-col">
@@ -59,9 +59,7 @@ const SIgnupPage = () => {
 						</div>
 					</li>
 				</ul>
-				<span className="absolute bg-blue-500 rounded-[150px] w-[700px] h-[900px] z-0 left-0">
-					
-				</span>
+				<span className="absolute bg-blue-500 rounded-[150px] w-[700px] h-[900px] z-0 left-0"></span>
 			</div>
 			<div className="flex flex-col justify-start items-center bg-white rounded-[50px] z-20 w-5/6 h-max m-2 mr-40 p-20 text-black gap-5">
 				<h2 className="font-bold text-4xl">Sign up</h2>
@@ -105,7 +103,7 @@ const SIgnupPage = () => {
 						<p className="ml-2">I agree to the Terms of Servce and Privacy Policy.</p>
 					</span>
 					<button 
-						className="bg-blue-400 border border-1 border-black rounded-md p-3 w-full font-semibold hover:rounded-3xl duration-200"
+						className="bg-blue-500 rounded-md p-3 w-full font-semibold text-white hover:rounded-3xl duration-200"
 						onClick={() => handleSubmit}
 					>
 						Create Account

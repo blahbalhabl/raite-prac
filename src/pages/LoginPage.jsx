@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { TextField } from "@mui/material"
 import useAuth from "../hooks/useAuth"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Icon } from "@iconify/react"
 import { icons } from "../utils/icons"
 import Footer from "../components/Footer"
 
@@ -24,6 +25,7 @@ const LoginPage = () => {
 	};
 
 	const handleSubmit = (e) => {
+		e.preventDefault();
 		setAuth(inputs.email);
 		sessionStorage.setItem('auth', inputs.email);
 		navigate('/dashboard');
@@ -31,47 +33,49 @@ const LoginPage = () => {
 
   return (
 		<>
-    <div className="flex flex-col justify-between items-center h-full">
-			<div className="flex flex-col items-center p-5 m-5 rounded-lg w-5/6 h-3/6 shadow-xl outline outline-2 outline-blue-600 my-auto sm:w-2/3 md:w-1/3">
-				<h3 
-					className="font-bold"
-				>
-					WELCOME BACK
-				</h3>
-				<p>Sign In to your account to continue</p>
+    <div className="relative flex flex-col justify-between items-center h-full bg-slate-100">
+			<div className="flex flex-col items-center p-16 m-5 bg-white rounded-2xl w-5/6 h-max gap-10 shadow-xl my-auto sm:w-2/3 lg:px-20 md:w-1/3 z-10">
+				<div className="text-center">
+					<Icon
+						className="text-7xl text-blue-600 text-center w-full"
+						icon={'solar:hospital-bold-duotone'} />
+					<h3 
+						className="font-bold text-2xl"
+					>
+						WELCOME BACK
+					</h3>
+					<p>Sign In to your account to continue</p>
+				</div>
 				<form 
-					onSubmit={() => handleSubmit()}
-					className="flex flex-col gap-5 w-full items-center"
+					onSubmit={handleSubmit}
+					className="flex flex-col gap-10 w-full items-center"
 				>
 					<TextField
 						className="w-full"
-						onChange={handleChange} 
+						onChange={handleChange}
+						type="email"
 						label="Email"
 						name="email"
-						variant="filled" 
+						variant="outlined" 
 						required />
-					<label 
-						htmlFor="email"
-						className="w-full relative"
-					>
-						Password
-						<span className="absolute text-blue-600 top-8 left-2">
-							<FontAwesomeIcon icon={ pass ? icons.lock : icons.unlock } />
-						</span>
-						<input
-							className="p-2 pl-10 outline outline-1 outline-blue-600 rounded-md w-full"
-							type={ pass ? 'password' : 'text' } 
-							name="password"
-							onChange={handleChange} />
-						<span
-							className="absolute text-blue-600 top-8 right-3"
-							onClick={() => setPass(!pass)}>
-							<FontAwesomeIcon icon={ pass ? icons.eyeslash : icons.eye } />
-						</span>
-					</label>
+						<div className="relative w-full">
+							<TextField
+								className="w-full"
+								onChange={handleChange} 
+								type={ pass ? 'password' : 'text' }
+								label="Password"
+								name="password"
+								variant="outlined" 
+								required />
+							<span
+								className="absolute text-blue-500 top-4 right-5"
+								onClick={() => setPass(!pass)}>
+								<FontAwesomeIcon icon={ pass ? icons.eyeslash : icons.eye } />
+							</span>
+						</div>
 					<button
-						onClick={() => handleSubmit()}
-						className="p-2 rounded-xl bg-yellow-300 border-2 border-b-5 border-blue-600 w-full font-bold text-blue-600 sm:w-3/6"
+						onClick={handleSubmit}
+						className="p-2 rounded-md bg-blue-500 font-semibold text-white select-none sm:w-3/6 hover:rounded-3xl duration-200"
 					>
 						Sign In
 					</button>
@@ -87,6 +91,10 @@ const LoginPage = () => {
 					</Link>
 				</span>
 			</div>
+			<span className="absolute bg-blue-500 rounded-[50px] w-[500px] h-[500px] z-0 left-10 top-10 hidden md:block"></span>
+			<span className="absolute bg-blue-300 rounded-[50px] w-[250px] h-[250px] z-0 left-[350px] top-[250px] rotate-45 hidden md:block"></span>
+			<span className="absolute bg-blue-500 rounded-[50px] w-[500px] h-[500px] z-0 right-10 bottom-10 rotate-45 hidden md:block"></span>
+			<span className="absolute bg-blue-300 rounded-[50px] w-[250px] h-[250px] z-0 right-[100px] bottom-[400px] hidden md:block"></span>
     </div>
 		<Footer />
 		</>
