@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { TextField } from "@mui/material"
 import useAuth from "../hooks/useAuth"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { icons } from "../utils/icons"
@@ -42,21 +43,13 @@ const LoginPage = () => {
 					onSubmit={() => handleSubmit()}
 					className="flex flex-col gap-5 w-full items-center"
 				>
-					<label 
-						htmlFor="email"
-						className="mt-2 w-full relative"
-					>
-						Email
-						<span className="absolute text-blue-600 top-8 left-2">
-							<FontAwesomeIcon icon={icons.email} />
-						</span>
-						<input
-							className="p-2 pl-10 outline outline-1 outline-blue-600 rounded-md w-full"
-							type="email" 
-							name="email"
-							onChange={handleChange}
-							placeholder="e.g. juantamad@gmail.com" />
-					</label>
+					<TextField
+						className="w-full"
+						onChange={handleChange} 
+						label="Email"
+						name="email"
+						variant="filled" 
+						required />
 					<label 
 						htmlFor="email"
 						className="w-full relative"

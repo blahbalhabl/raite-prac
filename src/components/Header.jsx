@@ -11,11 +11,14 @@ const Header = () => {
 		setAuth(null);
 		sessionStorage.removeItem('auth');
 	};
-
-	{ }
-
-  return (
-    <div className='w-full h-max p-5 px-20 flex justify-between items-center font-extrabold text-xl text-blue-600 border-b'>
+	return (
+		<div className='bg-blue-800'>
+	{ location.pathname === '/auth/signup' ? (
+		<div className='h-max bg-inherit p-5 flex justify-center items-center text-white font-bold text-2xl'>
+			<h3>Unkown Hospital Site</h3>
+		</div>
+	) : (
+    <div className='w-full h-max bg-white p-5 px-20 flex justify-between items-center font-extrabold text-xl text-blue-600 border-b'>
 				<Link className='relative group' to={ auth ? '/dashboard' : '/'}>
 					<FontAwesomeIcon icon={icons.home} />
 					<span 
@@ -24,9 +27,6 @@ const Header = () => {
 					</span>
 				</Link>
 			<div className='relative'>
-				{/* <span className='absolute text-slate-600 right-1/2 top-0 z-0 opacity-75 text-3xl'>
-					<FontAwesomeIcon icon={icons.hospital}/>
-				</span> */}
 				<h1 className='text-2xl pt-2 z-10'>Unkown Hospital Site</h1>
 			</div>
 			{ auth ? (
@@ -52,6 +52,9 @@ const Header = () => {
 			)}
 		</div>
   )
+	}
+	</div>
+	)
 }
 
 export default Header
