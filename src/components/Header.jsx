@@ -1,21 +1,55 @@
+import { Link, useLocation } from 'react-router-dom';
 import useAuth from '../hooks/useAuth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { icons } from '../utils/icons';
 
 const Header = () => {
 	const { auth, setAuth } = useAuth();
+	const location = useLocation();
+
+	const userLogout = () => {
+		setAuth(null);
+		sessionStorage.removeItem('auth');
+	};
+
+	{ }
 
   return (
-    <div className='fixed w-full h-max p-5 px-20 flex justify-between font-extrabold font-xl text-blue-600 border-b'>
-			<div>
-				<FontAwesomeIcon icon={icons.home} />
+    <div className='w-full h-max p-5 px-20 flex justify-between items-center font-extrabold text-xl text-blue-600 border-b'>
+				<Link className='relative group' to={ auth ? '/dashboard' : '/'}>
+					<FontAwesomeIcon icon={icons.home} />
+					<span 
+						className='font-light opacity-0 group-hover:opacity-100 absolute top-0 left-16 transform -translate-x-1/2 bg-black text-sm text-white px-2 py-1 rounded-md transition-opacity duration-300'>
+							{ auth ? 'Dashbord' : 'Home'}
+					</span>
+				</Link>
+			<div className='relative'>
+				{/* <span className='absolute text-slate-600 right-1/2 top-0 z-0 opacity-75 text-3xl'>
+					<FontAwesomeIcon icon={icons.hospital}/>
+				</span> */}
+				<h1 className='text-2xl pt-2 z-10'>Unkown Hospital Site</h1>
 			</div>
-			<div>
-				<h1 className='text-2xl'>Unkown Hospital Site</h1>
-			</div>
-			<div>
-				<FontAwesomeIcon icon={icons.login} />
-			</div>
+			{ auth ? (
+				<button
+					className='relative group'
+					onClick={userLogout}>
+					<FontAwesomeIcon icon={icons.logout} />
+					<span 
+						className='font-light opacity-0 group-hover:opacity-100 absolute top-0 right-16 transform -translate-x-1/2 bg-black text-sm text-white px-2 py-1 w-max rounded-md transition-opacity duration-300'>
+							Sign Out
+					</span>
+				</button>
+			) : (
+				<Link
+					className='relative group'
+					to={'/auth/login'}>
+					<FontAwesomeIcon icon={icons.login} />
+					<span 
+						className='font-light opacity-0 group-hover:opacity-100 absolute top-0 right-2 transform -translate-x-1/2 bg-black text-sm text-white px-2 py-1 w-max rounded-md transition-opacity duration-300'>
+							Sign In
+					</span>
+				</Link>
+			)}
 		</div>
   )
 }

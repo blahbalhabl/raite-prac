@@ -3,6 +3,10 @@ import { AuthProvider } from './context/AuthContext';
 import HomePage from './pages/HomePage';
 import Dashboard from './pages/Dashboard';
 import Header from './components/Header';
+import LoginPage from './pages/LoginPage';
+import RequireAuth from './components/RequireAuth';
+import SIgnupPage from './pages/SIgnupPage';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   return (
@@ -12,7 +16,12 @@ const App = () => {
           <Header />
           <Routes>
             <Route path='/' element={<HomePage />}/>
-            <Route path='/dashboard' element={<Dashboard />}/>
+            <Route path='/auth/login' element={<LoginPage />}/>
+            <Route path='/auth/signup' element={<SIgnupPage />}/>
+            <Route path='*' element={<NotFound />}/>
+            <Route element={<RequireAuth />}>
+              <Route path='/dashboard' element={<Dashboard />}/>
+            </Route>
           </Routes>
         </AuthProvider>
       </Router>
